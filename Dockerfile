@@ -1,8 +1,11 @@
-FROM golang:latest
+# iron/go:dev is the alpine image with the go tools added
+FROM golang:latest 
 
 RUN mkdir /app 
 ADD . /app/ 
-WORKDIR /app 
+WORKDIR /app/butler 
 
-RUN go build -o main . 
-CMD ["/app/main"]
+CMD ls
+
+RUN go build -o butler . 
+CMD ["./butler"]
