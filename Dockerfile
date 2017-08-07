@@ -1,6 +1,8 @@
-FROM python:2.7.13
+FROM golang:latest
 
-ADD . /code
-WORKDIR /code
+RUN mkdir /app 
+ADD . /app/ 
+WORKDIR /app 
 
-RUN ["python", "mailSend.py"]
+RUN go build -o main . 
+CMD ["/app/main"]
